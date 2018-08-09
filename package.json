@@ -1,15 +1,16 @@
 {
   "name": "vue-script-src",
+  "main": "./dist/vueScriptSrc.common",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "build:umd": "vue-cli-service build --target lib --name vueScriptSrc ./src/components/VueScriptSrc/VueScriptSrc.vue"
   },
-  "dependencies": {
-    "vue": "^2.5.17"
-  },
+  "dependencies": {},
   "devDependencies": {
+    "vue": "^2.5.17",
     "@vue/cli-service": "^3.0.0-rc.12",
     "vue-template-compiler": "^2.5.17"
   }
