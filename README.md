@@ -1,41 +1,53 @@
 # vue-script-src
-## Install
+在Vue组件中加载异步脚本的正确姿势。
+
+## 安装
+### npm
 ```
 $ npm i vue-script-src
 ```
 
-## Usage
-First, register it for component:
+## 使用
+### 示例
 ```
-import VueScriptSrc from 'vue-script-src'
+<template>
+  <div id="app">
+    <vue-script-src
+      :sources="['https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js']"
+      @completed="handleCompleted"
+    ></vue-script-src>
+  </div>
+</template>
+
+<script>
+import VueScriptSrc from './components/VueScriptSrc'
 
 export default {
-  //...
   components: {
     VueScriptSrc,
   },
+  methods: {
+    handleCompleted() {
+      console.log('completed')
+    },
+  },
 }
-```
-Then, use it in template:
-```
-<template>
-<!-- ... -->
-  <vue-script-src src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></vue-script-src>
-<!-- ... -->
-</template>
+</script>
 ```
 
-## Project setup
-```
-yarn install
-```
+### Props
+#### sources
+- 类型：Array
+- 默认值：[]
+- 说明: 异步脚本源地址数组，按照传入顺序进行加载
 
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
+#### source
+- 类型：String
+- 说明: 异步脚本源地址
 
-### Compiles and minifies for production
-```
-yarn run build
-```
+### Event
+#### completed
+- 类型：Function
+- 说明：传入脚本加载成功后执行
+
+
